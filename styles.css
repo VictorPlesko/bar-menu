@@ -162,6 +162,42 @@ a { color: var(--gold-soft); }
 }
 .ingredients .amount { color: var(--gold-soft); white-space: nowrap; }
 
+/* Секретный состав */
+.secret {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  padding: 28px 22px;
+  border: 1px dashed rgba(217, 164, 65, 0.4);
+  border-radius: 16px;
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(217, 164, 65, 0.08), transparent 70%),
+    rgba(255, 255, 255, 0.02);
+}
+.secret__lock {
+  font-size: 40px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 12px rgba(217, 164, 65, 0.35));
+}
+.secret__title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+.secret__text {
+  color: var(--muted);
+  font-weight: 300;
+  font-size: 15px;
+  max-width: 34ch;
+}
+
 @media (max-width: 760px) {
   .card { grid-template-columns: 1fr; }
   .card__media { min-height: 300px; }

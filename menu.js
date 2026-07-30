@@ -50,6 +50,13 @@ const COCKTAILS = {
       ["Лёд в кубиках", "180 г"],
     ],
   },
+  "limoncello": {
+    name: "Лимончелло а-ля Плеско",
+    latin: "Limoncello à la Plesko",
+    img: "assets/img/limoncello.png",
+    desc: "Домашний итальянский ликёр на лимонной цедре — готовим сами, по семейному рецепту. Настаиваем спирт на цедре отборных лимонов, а затем смягчаем сахарным сиропом до бархатистой сладости. Яркий, солнечный, с чистым лимонным ароматом и мягким согревающим финишем.",
+    secret: "Пропорции, срок настаивания и пара маленьких хитростей — семейная тайна дома Плеско.",
+  },
 };
 
 const stage = document.getElementById("stage");
@@ -58,9 +65,23 @@ function render(key) {
   const c = COCKTAILS[key];
   if (!c) return;
 
-  const ingredients = c.ingredients
-    .map(([n, a]) => `<li><span class="ing">${n}</span><span class="dots"></span><span class="amount">${a}</span></li>`)
-    .join("");
+  let composition;
+  if (c.secret) {
+    composition = `
+        <h3 class="card__h">Состав</h3>
+        <div class="secret">
+          <div class="secret__lock">🔒</div>
+          <p class="secret__title">Засекречено</p>
+          <p class="secret__text">${c.secret}</p>
+        </div>`;
+  } else {
+    const ingredients = c.ingredients
+      .map(([n, a]) => `<li><span class="ing">${n}</span><span class="dots"></span><span class="amount">${a}</span></li>`)
+      .join("");
+    composition = `
+        <h3 class="card__h">Состав</h3>
+        <ul class="ingredients">${ingredients}</ul>`;
+  }
 
   stage.innerHTML = `
     <article class="card">
@@ -71,9 +92,7 @@ function render(key) {
         <h2 class="card__name">${c.name}</h2>
         <p class="card__lat">${c.latin}</p>
         <p class="card__desc">${c.desc}</p>
-
-        <h3 class="card__h">Состав</h3>
-        <ul class="ingredients">${ingredients}</ul>
+${composition}
       </div>
     </article>`;
 }
