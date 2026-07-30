@@ -1,43 +1,38 @@
-# Барное меню 🍸
+# Bar Menu 🍸
 
-Одностраничное барное меню с выбором коктейлей: **дайкири, мохито, текила санрайз, виски кола**.
-Для каждого коктейля показывается фото, описание, состав и способ приготовления.
+A single-page bar menu for choosing cocktails: **Daiquiri, Mojito, Tequila Sunrise, Whisky Cola**.
+Each cocktail shows a photo, description and ingredients.
 
-Чистый статический сайт — HTML/CSS/JS, без сборки и зависимостей.
+A plain static site — HTML/CSS/JS, no build step and no dependencies.
 
-## Структура
+## Structure
 
 ```
-index.html        — разметка страницы
-styles.css        — стили (тёмная барная тема)
-menu.js           — данные коктейлей и логика переключения
-assets/img/       — фотографии коктейлей
-.github/workflows/deploy.yml — автодеплой на GitHub Pages
+index.html        — page markup
+styles.css        — styles (dark bar theme)
+menu.js           — cocktail data and switching logic
+assets/img/       — cocktail photos
+.github/workflows/deploy.yml — auto-deploy to GitHub Pages
 ```
 
-## Локальный запуск
+## Run locally
 
-Просто открой `index.html` в браузере, либо подними локальный сервер:
+Just open `index.html` in a browser, or start a local server:
 
 ```bash
 python3 -m http.server 8000
 # http://localhost:8000
 ```
 
-## Деплой на GitHub Pages
+## Deploy
 
-1. Создай репозиторий на GitHub и запушь код:
-   ```bash
-   git add .
-   git commit -m "Bar menu"
-   git branch -M main
-   git remote add origin git@github.com:<user>/<repo>.git
-   git push -u origin main
-   ```
-2. В настройках репозитория: **Settings → Pages → Build and deployment → Source → GitHub Actions**.
-3. Пуш в ветку `main` автоматически задеплоит сайт (workflow `deploy.yml`).
-   Адрес будет вида `https://<user>.github.io/<repo>/`.
+The site is fully static, so it can be hosted anywhere. Easiest options:
 
-## Источник данных
+- **Netlify Drop** — drag the project folder onto <https://app.netlify.com/drop>, get a URL in seconds.
+- **Surge** — run `npx surge .` from the project root.
+- **Cloudflare Pages / Netlify (Git)** — connect the repo; leave the build command empty and set the output directory to `.`.
+- **GitHub Pages** (free for public repos) — in the repo: **Settings → Pages → Build and deployment → Source → GitHub Actions**. Every push to `main` deploys automatically via `.github/workflows/deploy.yml`. The URL looks like `https://<user>.github.io/<repo>/`.
 
-Описания и фотографии — [inshaker.com](https://ru.inshaker.com/).
+## Data source
+
+Descriptions and photos come from [inshaker.com](https://ru.inshaker.com/).
